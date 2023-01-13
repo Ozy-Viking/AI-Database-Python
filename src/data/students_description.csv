@@ -1,0 +1,34 @@
+DID;Column Title;Description
+1;school;"student's school (binary: (""GP"" or ""0"") - Gabriel Pereira or (""MS"" or ""1"") - Mousinho da Silveira)"
+2;sex;"student's sex (binary: ""F"" or ""0""  - female or ""M"" or ""1"" - male)"
+3;age;student's age (numeric: from 15 to 22)
+4;address;"student's home address type (binary: ""U"" or ""0"" - urban or ""R"" or ""1"" - rural)"
+5;famsize;"family size (binary: ""LE3"" or ""0"" - less or equal to 3 or ""GT3"" or ""1"" - greater than 3)"
+6;Pstatus;"parent's cohabitation status (binary: ""T"" or ""0"" - living together or ""A"" or ""1"" - apart)"
+7;Medu;mother's education (numeric: 0 - none,  1 - primary education (4th grade), 2 – 5th to 9th grade, 3 – secondary education or 4 – higher education)
+8;Fedu;father's education (numeric: 0 - none,  1 - primary education (4th grade), 2 – 5th to 9th grade, 3 – secondary education or 4 – higher education)
+9;Mjob;"mother's job (nominal: ""teacher"" or ""0"", ""health"" care related or ""1"", civil ""services"" (e.g. administrative or police) or ""2"", ""at_home"" or ""3"" or ""other"" or ""4"")"
+10;Fjob;"father's job (nominal: ""teacher"" or ""0"", ""health"" care related or ""1"", civil ""services"" (e.g. administrative or police) or ""2"", ""at_home"" or ""3"" or ""other"" or ""4"")"
+11;reason;"reason to choose this school (nominal: close to ""home"" or ""0"", school ""reputation"" or ""1"", ""course""  or ""2"" or ""other"" or ""3"")"
+12;guardian;"student's guardian (nominal: ""mother"" or ""0"", ""father"" or ""1"" or ""other"" or ""2"")"
+13;traveltime;home to school travel time (numeric: 1 - <15 min., 2 - 15 to 30 min., 3 - 30 min. to 1 hour, or 4 - >1 hour)
+14;studytime;weekly study time (numeric: 1 - <2 hours, 2 - 2 to 5 hours, 3 - 5 to 10 hours, or 4 - >10 hours)
+15;failures;number of past class failures (numeric: n if 1<=n<3, else 4)
+16;schoolsup;extra educational support (binary: yes or no) (binary: 1 or 0)
+17;famsup;family educational support (binary: yes or no) (binary: 1 or 0)
+18;paid;extra paid classes within the course subject (Math or Portuguese) (binary: yes or no) (binary: 1 or 0)
+19;activities;extra-curricular activities (binary: yes or no) (binary: 1 or 0)
+20;nursery;attended nursery school (binary: yes or no) (binary: 1 or 0)
+21;higher;wants to take higher education (binary: yes or no) (binary: 1 or 0)
+22;internet;Internet access at home (binary: yes or no) (binary: 1 or 0)
+23;romantic;with a romantic relationship (binary: yes or no) (binary: 1 or 0)
+24;famrel;quality of family relationships (numeric: from 1 - very bad to 5 - excellent)
+25;freetime;free time after school (numeric: from 1 - very low to 5 - very high)
+26;goout;going out with friends (numeric: from 1 - very low to 5 - very high)
+27;Dalc;workday alcohol consumption (numeric: from 1 - very low to 5 - very high)
+28;Walc;weekend alcohol consumption (numeric: from 1 - very low to 5 - very high)
+29;health;current health status (numeric: from 1 - very bad to 5 - very good)
+30;absences;number of school absences (numeric: from 0 to 93)
+31;G1;first period grade (numeric: from 0 to 20)
+32;G2;second period grade (numeric: from 0 to 20)
+33;G3;final grade (numeric: from 0 to 20, output target)
