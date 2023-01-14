@@ -1,24 +1,15 @@
 #!/bin/env python3.11
 from __future__ import annotations
 
-import asyncio
-import sqlite3
-from dataclasses import dataclass, field
-from functools import partial
-from glob import glob
 from pathlib import Path
-from sqlite3 import Connection, Cursor
-from typing import Any, Callable, Optional, Protocol
 
-import pandas as pd
 from icecream import ic
 
-from src.database.database import Database, DatabaseGenerator
+from src.database.database import DatabaseGenerator
 from src.database.import_csv import gather_csv_paths
-from src.database.table import DBTable
 
 
-def students_str_map(value: str, column: str) -> int:
+def students_str_map(value: str, column: str) -> int | str:
     """
     Map for normalising the data.
     todo: implement import map from file, either toml or yaml.
@@ -99,7 +90,7 @@ def prepare_tables(table_dict):
     [tab.modify_index() for tab in table_dict.values()]
     [tab.dataframe_to_csv() for tab in table_dict.values()]
     ic(table_dict["students_description"].dataframe)
-    [tab.normalise_data(students_str_map) for tab in table_dict.values()]
+    # [tab.normalise_data(students_str_map) for tab in table_dict.values()]
 
 
 def main() -> int:

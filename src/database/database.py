@@ -3,17 +3,22 @@ Database control modules
 """
 from __future__ import annotations
 
-import asyncio
 import sqlite3
-from dataclasses import dataclass, field
-from functools import partial
-from glob import glob
 from pathlib import Path
 from sqlite3 import Connection, Cursor
-from typing import Any, Callable, Optional, Protocol
+from typing import Optional, Protocol
 
 import pandas as pd
 from icecream import ic
+
+
+class NormaliseMap(Protocol):
+    """
+    Protocol for normalizing tables.
+    """
+
+    def __call__(self, value: str, column: str) -> int:
+        ...
 
 
 class DBTable(Protocol):
@@ -26,6 +31,7 @@ class DBTable(Protocol):
     csv_path: Path
     database: Database
     dataframe: pd.DataFrame
+    index_label: str
 
     def normalise_data(self, data_map: NormaliseMap) -> DBTable:
         """
@@ -40,24 +46,24 @@ class DBTable(Protocol):
         """
         ...
 
-    def csv_to_dataframe(self, seperator: str = ";") -> DBTable:
+    def csv_to_dataframe(self, separator: str = ";") -> DBTable:
         """
         Imports the CSV to a DataFrame.
 
         Args:
-            seperator: separator used by the CSV. Default is ";"
+            separator: separator used by the CSV. Default is ";"
 
         Returns:
             DBTable: Self
         """
         ...
 
-    def dataframe_to_csv(self, seperator: str = ";") -> DBTable:
+    def dataframe_to_csv(self, separator: str = ";") -> DBTable:
         """
         Export DataFrame to a CSV.
 
         Args:
-            seperator: separator used by the CSV. Default is ";"
+            separator: separator used by the CSV. Default is ";"
 
         Returns:
             DBTable: Self
@@ -73,6 +79,9 @@ class DBTable(Protocol):
         """
         ...
 
+    def add(self) -> DBTable:
+        ...
+
 
 class Database:
     """
@@ -80,7 +89,7 @@ class Database:
     """
 
     def __init__(
-        self, name: str, folder: Optional[str | Path] = None, if_exists: str = "replace"
+            self, name: str, folder: Optional[str | Path] = None, if_exists: str = "replace"
     ):
         self.name: str = name
         self.tables: list[DBTable] = list()

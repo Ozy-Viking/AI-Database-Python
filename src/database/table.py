@@ -4,17 +4,13 @@ Table class for sqlite database.
 """
 from __future__ import annotations
 
-import asyncio
-import sqlite3
 from dataclasses import dataclass, field
 from functools import partial
-from glob import glob
 from pathlib import Path
 from sqlite3 import Connection, Cursor
-from typing import Any, Callable, Optional, Protocol
+from typing import Any, Protocol
 
 import pandas as pd
-from icecream import ic
 
 
 class NormaliseMap(Protocol):
@@ -108,30 +104,30 @@ class DBTable:
         self.dataframe.set_index(self.index_label, inplace=True)
         return self
 
-    def csv_to_dataframe(self, seperator: str = ";") -> DBTable:
+    def csv_to_dataframe(self, separator: str = ";") -> DBTable:
         """
         Imports the CSV to a DataFrame.
 
         Args:
-            seperator: separator used by the CSV. Default is ";"
+            separator: separator used by the CSV. Default is ";"
 
         Returns:
             DBTable: Self
         """
-        self.dataframe = pd.read_csv(self.csv_path, sep=seperator)
+        self.dataframe = pd.read_csv(self.csv_path, sep=separator)
         return self
 
-    def dataframe_to_csv(self, seperator: str = ";"):
+    def dataframe_to_csv(self, separator: str = ";"):
         """
         Export DataFrame to a CSV.
 
         Args:
-            seperator: separator used by the CSV. Default is ";"
+            separator: separator used by the CSV. Default is ";"
 
         Returns:
             DBTable: Self
         """
-        self.dataframe.to_csv(sep=seperator, path_or_buf=self.csv_path)
+        self.dataframe.to_csv(sep=separator, path_or_buf=self.csv_path)
         return self
 
     def add(self) -> DBTable:
